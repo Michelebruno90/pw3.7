@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- ===== META TAG E CONFIGURAZIONE DOCUMENTO ===== -->
+  <!-- Meta tag essenziali per SEO e accessibilità -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Report di sostenibilità Enel - Scopri il nostro impegno per un futuro più sostenibile attraverso pratiche innovative per ambiente, società e governance.">
+  <meta name="keywords" content="Enel, sostenibilità, report, ambiente, energia rinnovabile, transizione energetica">
+  <meta name="author" content="Michele Bruno - Project Work 3.7">
+  <meta name="theme-color" content="#00a033">
+  <meta name="project" content="Project Work 3.7 - Innovazione web per la rendicontazione sostenibile">
+
+  <!-- Open Graph per condivisione sui social media -->
+  <meta property="og:title" content="Enel Sustainability Reports">
+  <meta property="og:description" content="Report di sostenibilità e impegno per l'elettrificazione">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Titolo della pagina ottimizzato per SEO -->
+  <title>Project Work 3.7 - Report di Sostenibilità Enel | Innovazione Web</title>
+
+  
+
+  <!-- ===== OTTIMIZZAZIONI PERFORMANCE ===== -->
+  <!-- Preconnect per ottimizzare il caricamento delle risorse esterne -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Preload delle risorse critiche per migliorare le performance -->
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="lampadina_new.webp" as="image">
+  <link rel="preload" href="logo-enel.png" as="image">
+
+  <!-- ===== FOGLI DI STILE ===== -->
+  <!-- CSS principale del sito -->
+  <link href="style.css" rel="stylesheet" type="text/css">
+
+  <!-- Font Awesome per le icone con caricamento lazy per ottimizzare le performance -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+</head>
+
+<body>
+  <!-- ===== INTESTAZIONE PRINCIPALE ===== -->
+  <!-- Header con logo e social media -->
+  <header role="banner">
+    <!-- Logo aziendale Enel -->
+    <img src="logo-enel.png" alt="Logo Enel - Torna alla homepage" class="logo">
+
+    <!-- Menu di navigazione social media -->
+    <nav aria-label="Social media" class="social-icons">
+      <a href="https://www.facebook.com/enel.energia.10" 
+         aria-label="Segui Enel su Facebook (apre in una nuova finestra)"
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+      </a>
+      <a href="https://x.com/EnelEnergiaHelp" 
+         aria-label="Segui Enel su X - Twitter (apre in una nuova finestra)"
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.linkedin.com/company/enel" 
+         aria-label="Segui Enel su LinkedIn (apre in una nuova finestra)"
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+      </a>
+      <a href="https://www.instagram.com/enelenergia/" 
+         aria-label="Segui Enel su Instagram (apre in una nuova finestra)"
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===== POP-UP DI BENVENUTO ===== -->
+  <!-- Pop-up informativo sul progetto che appare all'apertura della pagina -->
+  <div id="welcomePopup" class="popup-overlay" role="dialog" aria-labelledby="popup-title" aria-modal="true">
+    <div class="popup-content">
+      <!-- Header del pop-up con titolo e pulsante chiudi -->
+      <div class="popup-header">
+        <h2 id="popup-title">Benvenuto nel Futuro dell'Energia Sostenibile</h2>
+        <button class="popup-close" 
+                onclick="closeWelcomePopup()" 
+                aria-label="Chiudi finestra di dialogo e torna alla pagina principale">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      
+      <!-- Corpo del pop-up con informazioni dettagliate -->
+      <div class="popup-body">
+        <!-- Icona principale del pop-up -->
+        <div class="popup-icon" aria-hidden="true">
+          <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+        </div>
+        
+        <!-- Informazioni generali sul progetto -->
+        <p><strong>Project Work 3.7</strong></p>
+        <p>Questo sito web rappresenta un progetto di innovazione tecnologica applicata alla rendicontazione sostenibile d'impresa.</p>
+
+        <!-- Dettagli tecnici del progetto in formato definizione -->
+        <div class="project-details" 
+             role="region" 
+             aria-labelledby="project-details-title"
+             tabindex="0"
+             aria-label="Dettagli del progetto - sezione interattiva">
+          <h3 id="project-details-title" class="sr-only">Dettagli del progetto</h3>
+          <dl>
+            <dt tabindex="0" role="button" aria-label="Campo Autore">Autore:</dt>
+            <dd>Michele Bruno</dd>
+
+            <dt tabindex="0" role="button" aria-label="Campo Tema">Tema:</dt>
+            <dd>Tecnologia web per la sostenibilità d'impresa</dd>
+
+            <dt tabindex="0" role="button" aria-label="Campo Obiettivo">Obiettivo:</dt>
+            <dd>Sviluppo di una pagina web per il download dei report di sostenibilità di un'impresa del settore secondario</dd>
+
+            <dt tabindex="0" role="button" aria-label="Campo Titolo">Titolo:</dt>
+            <dd>Innovazione web per la rendicontazione sostenibile</dd>
+
+            <dt tabindex="0" role="button" aria-label="Campo Anno Accademico">Anno Accademico:</dt>
+            <dd>2025/2026</dd>
+          </dl>
+        </div>
+      </div>
+      
+      <!-- Footer del pop-up con pulsante di chiusura -->
+      <div class="popup-footer">
+        <button id="popup-main-button" 
+                class="popup-btn-primary" 
+                onclick="closeWelcomePopup()"
+                aria-label="Chiudi e inizia la navigazione del sito">
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          Buona Navigazione
+        </button>
+        
+        <!-- Pulsante alternativo per chiudere -->
+        <button class="popup-btn-secondary" 
+                onclick="closeWelcomePopup()"
+                aria-label="Chiudi finestra">
+          <i class="fas fa-times" aria-hidden="true"></i>
+          Chiudi
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SEZIONE HERO PRINCIPALE ===== -->
+  <!-- Sezione di copertina con immagine rappresentativa -->
+  <section class="hero" role="img" aria-labelledby="hero-description">
+    <img src="lampadina_new.webp" 
+         alt="Lampadina illuminata simbolo di innovazione energetica e sostenibilità" 
+         class="hero-image"
+         loading="eager">
+    <!-- Descrizione nascosta per screen reader -->
+    <span id="hero-description" class="sr-only">
+      Immagine di copertina che rappresenta l'innovazione nel settore energetico
+    </span>
+  </section>
+
+  <!-- ===== MENU DI NAVIGAZIONE SEZIONI ===== -->
+  <!-- Menu sticky per navigare tra le sezioni principali della pagina -->
+  <nav class="section-nav" aria-label="Navigazione principale delle sezioni">
+    <div class="nav-container">
+      <!-- Link alla sezione Report -->
+      <a href="#unified-reports" class="nav-link" aria-describedby="nav-reports-desc">
+        <i class="fas fa-file-alt" aria-hidden="true"></i>
+        <span class="nav-text">Report</span>
+        <span id="nav-reports-desc" class="sr-only">Vai alla sezione Report di Sostenibilità</span>
+      </a>
+      
+      <!-- Link alla sezione Informativa -->
+      <a href="#info-section" class="nav-link" aria-describedby="nav-info-desc">
+        <i class="fas fa-leaf" aria-hidden="true"></i>
+        <span class="nav-text">Verso un Futuro Sostenibile</span>
+        <span id="nav-info-desc" class="sr-only">Vai alla sezione Verso un Futuro Sostenibile</span>
+      </a>
+      
+      <!-- Link alla sezione Video -->
+      <a href="#video-section" class="nav-link" aria-describedby="nav-video-desc">
+        <i class="fas fa-play-circle" aria-hidden="true"></i>
+        <span class="nav-text">Elettrificazione: Il Futuro È Ora</span>
+        <span id="nav-video-desc" class="sr-only">Vai alla sezione Elettrificazione: Il Futuro È Ora</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== CONTENUTO PRINCIPALE ===== -->
+  <main role="main" id="main-content">
+    <!-- ===== SEZIONE REPORT DI SOSTENIBILITÀ ===== -->
+    <!-- Sezione principale contenente i report scaricabili -->
+    <section id="reports-section" class="reports-container" aria-labelledby="reports-heading">
+      <!-- Titolo della sezione -->
+      <h2 id="reports-heading" class="reports-subtitle">I Nostri Report per il Futuro</h2>
+
+      <!-- Card unificata contenente tutti i report disponibili -->
+      <div id="unified-reports" class="unified-reports-card" role="region" aria-labelledby="reports-title">
+        <!-- Header della card con icona e descrizione -->
+        <div class="unified-reports-header">
+          <div class="unified-reports-icon">
+            <i class="fas fa-file-alt" aria-hidden="true"></i>
+          </div>
+          <div class="unified-reports-intro">
+            <p>Accedi ai nostri report ufficiali di sostenibilità per scoprire i progressi e gli impegni concreti verso un futuro più sostenibile.</p>
+          </div>
+        </div>
+
+        <!-- Lista dei report disponibili per il download -->
+        <div class="reports-list" role="list" aria-label="Lista dei report disponibili">
+          <!-- Report 1: Bilancio di Sostenibilità 2023 -->
+          <article class="report-item" role="listitem" tabindex="0" 
+                   aria-label="Bilancio di Sostenibilità 2023 - Pubblicato Dicembre 2023">
+            <div class="report-item-icon" aria-hidden="true">
+              <i class="fas fa-leaf" aria-hidden="true"></i>
+            </div>
+            <div class="report-item-content">
+              <h4 id="report-1-title">Bilancio di Sostenibilità 2023</h4>
+              <p class="report-item-description">Il rapporto completo sui risultati di sostenibilità raggiunti nell'anno 2023</p>
+              <p class="report-item-date">
+                <time datetime="2023-12">Pubblicato: Dicembre 2023</time>
+              </p>
+            </div>
+            <div class="report-item-action">
+              <button onclick="downloadReport('bilancio-sostenibilita_2023.pdf', event)" 
+                      class="download-btn-unified"
+                      aria-labelledby="report-1-title"
+                      aria-describedby="bilancio-desc">
+                <i class="fas fa-download" aria-hidden="true"></i> 
+                Scarica PDF
+              </button>
+              <span id="bilancio-desc" class="sr-only">
+                Scarica il Bilancio di Sostenibilità 2023 in formato PDF, dimensione file circa 2.5MB
+              </span>
+            </div>
+          </article>
+
+          <!-- Report 2: Informativa Sostenibilità Semestrale -->
+          <article class="report-item" role="listitem" tabindex="0"
+                   aria-label="Informativa Sostenibilità Semestrale - Pubblicato Giugno 2023">
+            <div class="report-item-icon" aria-hidden="true">
+              <i class="fas fa-seedling" aria-hidden="true"></i>
+            </div>
+            <div class="report-item-content">
+              <h4 id="report-2-title">Informativa Sostenibilità Semestrale</h4>
+              <p class="report-item-description">Aggiornamento semestrale sui progressi degli obiettivi di sostenibilità</p>
+              <p class="report-item-date">
+                <time datetime="2023-06">Pubblicato: Giugno 2023</time>
+              </p>
+            </div>
+            <div class="report-item-action">
+              <button onclick="downloadReport('informativa-sostenibilita-semestrale_30giugno2023.pdf', event)" 
+                      class="download-btn-unified"
+                      aria-labelledby="report-2-title"
+                      aria-describedby="informativa-desc">
+                <i class="fas fa-download" aria-hidden="true"></i> 
+                Scarica PDF
+              </button>
+              <span id="informativa-desc" class="sr-only">
+                Scarica l'Informativa Sostenibilità Semestrale di Giugno 2023 in formato PDF, dimensione file circa 1.8MB
+              </span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEZIONE INFORMATIVA AZIENDALE ===== -->
+    <!-- Sezione con informazioni sui pilastri della sostenibilità Enel -->
+    <section id="info-section" class="info-section" aria-labelledby="info-heading">
+      <div class="info-container">
+        <!-- Titolo della sezione informativa -->
+        <h2 id="info-heading">Verso un Futuro Sostenibile</h2>
+
+        <!-- Griglia con i quattro punti chiave della sostenibilità -->
+        <div class="info-grid" role="list" aria-label="Punti chiave della sostenibilità Enel">
+          <!-- Punto 01: Modello di Business -->
+          <article class="info-card" role="listitem" tabindex="0" 
+                   aria-label="Punto 1: Il nostro modello di business sostenibile">
+            <div class="info-number" aria-label="Punto numero uno">01.</div>
+            <div class="info-content">
+              <h3 id="business-model">Il nostro modello di business sostenibile</h3>
+              <p aria-describedby="business-model">Siamo un gruppo leader nel settore energetico e creiamo valore per tutti gli stakeholder nel lungo periodo.</p>
+            </div>
+            <div class="info-icon" aria-label="Icona edificio aziendale">
+              <i class="fas fa-building" aria-hidden="true"></i>
+            </div>
+          </article>
+
+          <!-- Punto 02: Approccio di Reporting -->
+          <article class="info-card" role="listitem" tabindex="0"
+                   aria-label="Punto 2: Il nostro approccio di reporting">
+            <div class="info-number" aria-label="Punto numero due">02.</div>
+            <div class="info-content">
+              <h3 id="reporting-approach">Il nostro approccio di reporting</h3>
+              <p aria-describedby="reporting-approach">La metodologia e l'approccio di Enel al reporting di sostenibilità, rivolto a tutti gli stakeholder.</p>
+            </div>
+            <div class="info-icon" aria-label="Icona grafico di crescita">
+              <i class="fas fa-chart-line" aria-hidden="true"></i>
+            </div>
+          </article>
+
+          <!-- Punto 03: Rating e Indici ESG -->
+          <article class="info-card" role="listitem" tabindex="0"
+                   aria-label="Punto 3: La nostra presenza nei principali rating, indici e benchmark ESG">
+            <div class="info-number" aria-label="Punto numero tre">03.</div>
+            <div class="info-content">
+              <h3 id="rating-presence">La nostra presenza nei principali rating, indici e benchmark ESG</h3>
+              <p aria-describedby="rating-presence">Il posizionamento di Enel nei rating e indici di sostenibilità.</p>
+            </div>
+            <div class="info-icon" aria-hidden="true">
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+          </article>
+
+          <!-- Punto 04: Network e Organizzazioni -->
+          <article class="info-card" role="listitem" tabindex="0"
+                   aria-label="Punto 4: La nostra partecipazione nelle principali organizzazioni e network di sostenibilità">
+            <div class="info-number" aria-label="Punto numero quattro">04.</div>
+            <div class="info-content">
+              <h3 id="network-participation">La nostra partecipazione nelle principali organizzazioni e network di sostenibilità</h3>
+              <p aria-describedby="network-participation">Gli impegni di Enel nelle iniziative multi-stakeholder di sostenibilità per dare impulso agli obiettivi di sviluppo sostenibile.</p>
+            </div>
+            <div class="info-icon" aria-hidden="true">
+              <i class="fas fa-network-wired" aria-hidden="true"></i>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEZIONE VIDEO AZIENDALE ===== -->
+    <!-- Sezione contenente il video sull'elettrificazione -->
+    <section id="video-section" class="video-section" aria-labelledby="video-heading">
+      <!-- Titolo della sezione video -->
+      <h3 id="video-heading">Elettrificazione: Il Futuro È Ora</h3>
+
+      <!-- Container del video con controlli ottimizzati per accessibilità -->
+      <div class="video-container">
+        <!-- Video aziendale principale con supporto completo per accessibilità -->
+        <video id="mainVideo" 
+               controls 
+               class="full-width-video" 
+               preload="none"
+               poster="anteprima_video.png"
+               aria-describedby="video-description video-transcript"
+               controlslist="nodownload noremoteplaybook"
+               disablepictureinpicture
+               loading="lazy">
+          <!-- Sorgente video in formato MP4 -->
+          <source src="global-elettrificazione-hd.mp4" type="video/mp4">
+
+          <!-- Tracce per sottotitoli e descrizioni audio (accessibilità) -->
+          <track kind="captions" 
+                 src="caption_it_VTT.vtt" 
+                 srclang="it" 
+                 label="Sottotitoli in Italiano"
+                 default>
+          <track kind="descriptions" 
+                 src="caption_it_VTT.vtt" 
+                 srclang="it" 
+                 label="Descrizione Audio">
+          
+          <!-- Fallback per browser che non supportano HTML5 video -->
+          <p role="alert" aria-live="polite">
+            Il tuo browser non supporta la riproduzione video HTML5. 
+            <a href="global-elettrificazione-hd.mp4" 
+               aria-label="Scarica il video dell'elettrificazione in formato MP4 (dimensione: circa 15MB)">
+              Scarica il video
+            </a> per visualizzarlo con un player esterno.
+          </p>
+        </video>
+        
+        <!-- Descrizione dettagliata del video per screen reader -->
+        <div id="video-description" class="sr-only">
+          Video aziendale Enel che illustra l'impegno per l'elettrificazione sostenibile 
+          e la transizione verso energie rinnovabili. Il video mostra immagini di impianti 
+          solari, eolici e infrastrutture elettriche moderne. Durata: 1 minuto e 17 secondi. 
+          Include sottotitoli e descrizioni audio in italiano. Audio disponibile.
+        </div>
+        
+        <!-- Trascrizione completa del video per accessibilità -->
+        <div id="video-transcript" class="sr-only">
+          Trascrizione disponibile: Il video parla della strada verso la completa decarbonizzazione 
+          attraverso l'elettrificazione, mostrando come l'energia rinnovabile possa trasformare 
+          il nostro modo di vivere, rendendo l'aria più pulita e i trasporti più sostenibili. 
+          Enel si impegna a raggiungere emissioni zero entro il 2040.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER INFORMATIVO ===== -->
+  <!-- Piè di pagina con informazioni aziendali -->
+  <footer role="contentinfo" aria-labelledby="footer-heading">
+    <div class="footer-content">
+      <!-- Titolo nascosto per accessibilità -->
+      <h2 id="footer-heading" class="sr-only">Informazioni aziendali</h2>
+
+      <!-- Sezione brand e informazioni legali -->
+      <section class="footer-section" aria-labelledby="brand-heading">
+        <h3 id="brand-heading" class="sr-only">Informazioni aziendali</h3>
+        <!-- Logo aziendale nel footer -->
+        <img src="logo-enel.png" 
+             alt="Logo Enel - Azienda leader nel settore energetico" 
+             class="footer-logo"
+             role="img">
+        <!-- Informazioni di copyright e partita IVA -->
+        <p>&copy; 2024 Enel S.p.A. Tutti i diritti riservati</p>
+        <p>P.IVA <span lang="en">00811720580</span></p>
+      </section>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPT E METADATA ===== -->
+  <!-- JavaScript per le funzionalità interattive del sito -->
+  <script src="script.js"></script>
+
+  <!-- Schema markup strutturato per migliorare il SEO (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Enel S.p.A.",
+    "url": "https://www.enel.com",
+    "logo": "logo-enel.png",
+    "description": "Azienda leader nel settore energetico e della sostenibilità",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Viale Regina Margherita, 137",
+      "addressLocality": "Roma",
+      "postalCode": "00198",
+      "addressCountry": "IT"
+    }
+  }
+  </script>
+</body>
+</html>

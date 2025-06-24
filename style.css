@@ -1,0 +1,2264 @@
+/* ===== RESET E CONFIGURAZIONE BASE ===== */
+/* Reset universale per eliminare margini e padding predefiniti del browser */
+* {
+  box-sizing: border-box; /* Include padding e border nelle dimensioni totali dell'elemento */
+}
+
+/* Ottimizzazione rendering per performance */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ottimizzazione per compositing GPU */
+.hero-image,
+.report-card,
+.info-card,
+.popup-content {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Stili base per il corpo della pagina */
+body {
+  margin: 0; /* Rimuove margini predefiniti */
+  padding: 0; /* Rimuove padding predefiniti */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font principale del sito */
+  line-height: 1.6; /* Migliora la leggibilità del testo */
+  color: #333; /* Colore del testo principale */
+  background-color: #fafafa; /* Colore di sfondo originale grigio chiaro */
+}
+
+/* Outline personalizzato per migliorare l'accessibilità della navigazione da tastiera */
+*:focus {
+  outline: 3px solid #00a033; /* Contorno verde Enel più spesso per migliore visibilità */
+  outline-offset: 2px; /* Spazio tra elemento e contorno */
+}
+
+/* Focus visibile solo per navigazione da tastiera */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid #00a033;
+  outline-offset: 2px;
+}
+
+/* ===== STILI HEADER ===== */
+/* Intestazione principale del sito con logo e social */
+header {
+  display: flex; /* Layout flessibile per allineare elementi */
+  justify-content: space-between; /* Distanzia logo e social ai lati opposti */
+  align-items: center; /* Allinea verticalmente al centro */
+  padding: 15px 20px; /* Spaziatura interna dell'header */
+  background-color: white; /* Sfondo bianco per l'header */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombra sottile sotto l'header */
+  position: sticky; /* Header fisso durante lo scroll */
+  top: 0; /* Posizionamento in cima alla pagina */
+  z-index: 100; /* Livello superiore per rimanere sopra altri elementi */
+  min-height: 60px; /* Altezza minima per consistenza */
+}
+
+/* Stili per il logo Enel nell'header */
+.logo {
+  height: 40px; /* Altezza fissa del logo */
+  width: auto; /* Larghezza proporzionale all'altezza */
+  transition: transform 0.3s ease; /* Animazione fluida per effetti hover */
+}
+
+/* Effetto hover sul logo per migliorare l'interattività */
+.logo:hover {
+  transform: scale(1.05); /* Ingrandimento leggero al passaggio del mouse */
+}
+
+/* ===== ICONE SOCIAL ===== */
+/* Contenitore per le icone dei social media */
+.social-icons {
+  display: flex; /* Layout orizzontale per le icone */
+  gap: 15px; /* Spazio tra le icone social */
+  align-items: center; /* Allinea le icone verticalmente */
+}
+
+/* Stili per i link delle icone social */
+.social-icons a {
+  color: #666; /* Colore grigio per le icone */
+  font-size: 20px; /* Dimensione delle icone */
+  text-decoration: none; /* Rimuove sottolineatura dai link */
+  transition: all 0.3s ease; /* Animazione fluida per tutti i cambiamenti */
+  padding: 8px; /* Padding per area cliccabile più grande */
+  border-radius: 50%; /* Forma circolare per l'area di hover */
+  display: flex; /* Layout flex per centrare l'icona */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+}
+
+/* Effetti hover e focus per le icone social */
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #00a033; /* Cambia colore al verde Enel */
+  background-color: rgba(0,160,51,0.1); /* Sfondo verde trasparente */
+  transform: translateY(-2px); /* Lieve movimento verso l'alto */
+}
+
+/* ===== SEZIONE HERO ===== */
+/* Sezione principale con immagine di copertina */
+.hero {
+  width: 100%; /* Larghezza completa della pagina */
+  height: 60vh; /* Altezza pari al 60% della finestra del browser */
+  min-height: 400px; /* Altezza minima per schermi piccoli */
+  max-height: 600px; /* Altezza massima per schermi grandi */
+  overflow: hidden; /* Nasconde parti di immagine che eccedono */
+  position: relative; /* Posizionamento relativo per elementi figli */
+  display: flex; /* Layout flex per centrare il contenuto */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+}
+
+/* Immagine principale della sezione hero */
+.hero-image {
+  width: 100%; /* Larghezza completa del contenitore */
+  height: 100%; /* Altezza completa del contenitore */
+  object-fit: cover; /* Mantiene proporzioni coprendo tutto lo spazio */
+  object-position: center center; /* Posiziona l'immagine al centro sia orizzontalmente che verticalmente */
+  transition: transform 0.3s ease; /* Animazione fluida per effetto zoom */
+  min-height: 100%; /* Assicura che l'immagine copra almeno tutta l'altezza */
+}
+
+/* Miglioramento per zoom della pagina */
+@media (min-resolution: 1.5dppx) {
+  .hero {
+    height: 65vh; /* Altezza leggermente maggiore per zoom elevati */
+    min-height: 450px; /* Altezza minima maggiore per compensare il zoom */
+  }
+}
+
+
+
+/* ===== MENU NAVIGAZIONE SEZIONI ===== */
+/* Menu di navigazione tra le sezioni principali della pagina */
+.section-nav {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); /* Sfondo bianco con leggero gradiente */
+  padding: 15px 0; /* Spaziatura verticale ridotta */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Ombra sottile */
+  position: sticky; /* Rimane visibile durante lo scroll */
+  top: 60px; /* Posizionato sotto l'header (altezza header minima) */
+  z-index: 90; /* Livello inferiore all'header ma superiore al contenuto */
+  border-bottom: 1px solid #e0e0e0; /* Bordo inferiore per separazione */
+}
+
+/* Contenitore del menu di navigazione */
+.nav-container {
+  max-width: 1000px; /* Larghezza massima aumentata per 4 pulsanti */
+  margin: 0 auto; /* Centra il contenitore */
+  padding: 0 20px; /* Padding orizzontale */
+  display: flex; /* Layout flex per allineare i link */
+  justify-content: center; /* Centra i link orizzontalmente */
+  align-items: center; /* Allinea verticalmente */
+  gap: 20px; /* Spazio ridotto tra i link di navigazione per 4 pulsanti */
+  flex-wrap: wrap; /* Permette wrapping su schermi piccoli */
+}
+
+/* Singolo link di navigazione */
+.nav-link {
+  display: flex; /* Layout flex per icona e testo */
+  flex-direction: column; /* Disposizione verticale di icona e testo */
+  align-items: center; /* Centra il contenuto */
+  gap: 8px; /* Spazio aumentato tra icona e testo */
+  padding: 16px 20px; /* Spaziatura interna più generosa */
+  text-decoration: none; /* Rimuove sottolineatura */
+  color: #333; /* Colore grigio scuro */
+  border-radius: 16px; /* Angoli più arrotondati per coerenza */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animazione più fluida */
+  position: relative; /* Per elementi posizionati assolutamente */
+  min-width: 120px; /* Larghezza minima aumentata */
+  text-align: center; /* Centra il testo */
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); /* Sfondo bianco con gradiente */
+  border: 1px solid #e0e0e0; /* Bordo sottile grigio */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Ombra sottile */
+}
+
+/* Effetto hover sui link di navigazione */
+.nav-link:hover,
+.nav-link:focus {
+  color: #00a033; /* Colore verde Enel */
+  background: linear-gradient(135deg, rgba(0,160,51,0.08) 0%, rgba(0,160,51,0.15) 100%); /* Sfondo verde più intenso */
+  border-color: rgba(0,160,51,0.3); /* Bordo verde più visibile */
+  transform: translateY(-5px); /* Sollevamento maggiore per coerenza */
+  box-shadow: 0 8px 25px rgba(0,160,51,0.2); /* Ombra verde più pronunciata */
+}
+
+/* Icona nei link di navigazione */
+.nav-link i {
+  font-size: 1.2rem; /* Dimensione dell'icona ridotta */
+  color: #666; /* Colore grigio iniziale */
+  transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Cambio colore icona al hover */
+.nav-link:hover i,
+.nav-link:focus i {
+  color: #00a033; /* Colore verde Enel */
+  transform: scale(1.05); /* Leggero ingrandimento ridotto */
+}
+
+/* Testo nei link di navigazione */
+.nav-text {
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem); /* Dimensione responsive standardizzata */
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  line-height: 1.2; /* Altezza di riga ottimizzata */
+}
+
+/* Effetto focus accessibile */
+.nav-link:focus {
+  outline: 3px solid #00a033; /* Outline verde per accessibilità */
+  outline-offset: 2px; /* Offset per migliore visibilità */
+}
+
+/* Indicatore attivo per la sezione corrente */
+.nav-link.active {
+  color: #00a033; /* Colore verde attivo */
+  background: linear-gradient(135deg, rgba(0,160,51,0.15) 0%, rgba(0,160,51,0.25) 100%); /* Sfondo verde più intenso */
+  border-color: rgba(0,160,51,0.4); /* Bordo verde più marcato */
+  transform: translateY(-3px); /* Leggero sollevamento per indicare stato attivo */
+  box-shadow: 0 6px 20px rgba(0,160,51,0.25); /* Ombra verde per evidenziare */
+}
+
+.nav-link.active i {
+  color: #00a033; /* Icona verde per link attivo */
+  transform: scale(1.1); /* Leggero ingrandimento icona attiva */
+}
+
+/* ===== RESPONSIVE DESIGN MENU NAVIGAZIONE ===== */
+/* Adattamenti per tablet */
+@media (max-width: 768px) {
+  .section-nav {
+    padding: 15px 0; /* Padding ridotto */
+    top: 60px; /* Posizione aggiustata per header su tablet */
+  }
+
+  .nav-container {
+    gap: 20px; /* Spazio ottimizzato tra link */
+    padding: 0 15px; /* Padding laterale ridotto */
+  }
+
+  .nav-link {
+    padding: 14px 16px; /* Padding ottimizzato per touch */
+    min-width: 110px; /* Larghezza minima aumentata per leggibilità */
+  }
+
+  .nav-link i {
+    font-size: 1.3rem; /* Icona mantenuta visibile */
+  }
+
+  .nav-text {
+    font-size: 0.85rem; /* Testo leggibile */
+    font-weight: 500; /* Peso aumentato per chiarezza */
+  }
+}
+
+/* Media query intermedia per schermi medio-piccoli (481px - 600px) */
+@media (max-width: 600px) and (min-width: 481px) {
+  .section-nav {
+    padding: 14px 0;
+  }
+
+  .nav-container {
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .nav-link {
+    padding: 10px 8px;
+    min-width: 85px;
+  }
+
+  .nav-link i {
+    font-size: 1.15rem;
+  }
+
+  .nav-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+/* Adattamenti per smartphone */
+@media (max-width: 480px) {
+  .section-nav {
+    padding: 15px 0; /* Padding leggermente aumentato per touch */
+    position: sticky; /* Mantiene sticky anche su mobile */
+    top: 120px; /* Posizione corretta sotto l'header mobile espanso */
+  }
+
+  .nav-container {
+    gap: 8px; /* Spazio ottimizzato per 3 pulsanti */
+    padding: 0 10px; /* Padding aumentato per margini */
+    justify-content: space-between; /* Distribuisce uniformemente */
+    flex-wrap: nowrap; /* Impedisce il wrapping */
+  }
+
+  .nav-link {
+    padding: 8px 6px 12px 6px; /* Padding asimmetrico per gestire testo su più righe */
+    min-width: 80px; /* Larghezza aumentata per migliore leggibilità */
+    gap: 4px; /* Spazio ridotto tra icona e testo */
+    border-radius: 12px; /* Angoli arrotondati per mobile */
+    min-height: 60px; /* Altezza minima per contenere testo su più righe */
+    align-items: center; /* Centra il contenuto verticalmente */
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+  }
+
+  .nav-link i {
+    font-size: 1.2rem; /* Icona leggermente più grande per visibilità */
+  }
+
+  .nav-text {
+    font-size: 0.7rem; /* Testo più leggibile */
+    line-height: 1.2; /* Altezza di riga migliorata */
+    font-weight: 500; /* Peso leggermente maggiore per leggibilità */
+    white-space: normal; /* Permette il wrapping del testo su mobile */
+    text-align: center; /* Centra il testo su più righe */
+    max-width: 80px; /* Larghezza massima per controllo wrapping */
+  }
+
+  /* Effetto hover ottimizzato per mobile */
+  .nav-link:hover,
+  .nav-link:focus {
+    transform: translateY(-2px); /* Sollevamento più visibile */
+    box-shadow: 0 4px 12px rgba(0,160,51,0.2); /* Ombra più pronunciata */
+  }
+}
+
+/* Adattamenti per schermi molto piccoli */
+@media (max-width: 320px) {
+  .section-nav {
+    padding: 12px 0; /* Padding ottimizzato */
+  }
+
+  .nav-container {
+    gap: 4px; /* Spazio minimo ma funzionale */
+    padding: 0 5px; /* Padding minimo ma presente */
+    justify-content: space-evenly; /* Distribuzione più uniforme */
+  }
+
+  .nav-link {
+    padding: 10px 4px; /* Padding aumentato per area touch */
+    min-width: 70px; /* Larghezza aumentata per usabilità */
+    gap: 4px; /* Spazio mantenuto tra icona e testo */
+    border-radius: 10px; /* Angoli arrotondati proporzionali */
+  }
+
+  .nav-text {
+    font-size: 0.65rem; /* Testo più leggibile */
+    line-height: 1.1; /* Altezza di riga ottimizzata */
+    font-weight: 500; /* Peso per migliore leggibilità */
+  }
+
+  .nav-link i {
+    font-size: 1.1rem; /* Icona leggermente più grande */
+  }
+
+  /* Migliora l'area touch su schermi molto piccoli */
+  .nav-link {
+    min-height: 44px; /* Altezza minima per accessibilità touch */
+  }
+}
+
+/* ===== CONTENITORE REPORT ===== */
+/* Sezione principale contenente i report di sostenibilità */
+.reports-container {
+  padding: 60px 20px; /* Aumenta spaziatura interna della sezione */
+  max-width: 1200px; /* Larghezza massima per leggibilità ottimale */
+  margin: 0 auto; /* Centra il contenitore nella pagina */
+  background: white; /* Sfondo bianco pulito */
+  position: relative; /* Per elementi decorativi */
+}
+
+/* Elemento decorativo sottile per separare la sezione reports */
+#reports-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, #00a033, #00d641);
+  border-radius: 1px;
+}
+
+/* ===== TIPOGRAFIA ===== */
+/* Sistema di dimensioni dei titoli coerente e scalabile */
+/* Titolo principale della pagina (h1) */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: clamp(2rem, 4.5vw, 2.8rem); /* Aumentato per maggiore importanza */
+  font-weight: 700; /* Più marcato per il titolo principale */
+  line-height: 1.2;
+  letter-spacing: -0.02em; /* Spaziatura ottimizzata per grandi dimensioni */
+}
+
+/* Titoli delle sezioni principali (h2) */
+h2,
+.info-section h2,
+.video-section h2,
+.reports-subtitle {
+  text-align: center;
+  color: #333;
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem); /* Dimensione coerente per tutti gli h2 */
+  font-weight: 600;
+  margin-bottom: 40px; /* Spazio uniforme e proporzionale */
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+/* Sottotitoli delle sezioni (h3) */
+h3,
+.video-section h3 {
+  text-align: center;
+  color: #333;
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem); /* Dimensione intermedia tra h2 e h4 */
+  font-weight: 600;
+  margin-bottom: 35px;
+  line-height: 1.3;
+}
+
+/* Titoli delle card e contenuti (h4) */
+h4,
+.report-item-content h4,
+.info-content h3 {
+  color: #333;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem); /* Dimensione coerente per elementi di contenuto */
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Sottotitolo descrittivo sotto il titolo principale */
+.subtitle {
+  text-align: center;
+  color: #555; /* Colore leggermente più scuro per miglior contrasto */
+  font-size: clamp(1rem, 2.2vw, 1.25rem); /* Dimensione proporzionale al titolo principale */
+  margin: 25px auto 45px auto;
+  max-width: 800px;
+  line-height: 1.5; /* Altezza di riga ottimizzata per la leggibilità */
+  font-weight: 400; /* Peso normale per distinguerlo dai titoli */
+}
+
+
+
+/* Animazione per evidenziare le sezioni quando si naviga dal menu */
+@keyframes reportCardHighlight {
+  0% {
+    transform: translateY(-8px) scale(1);
+    box-shadow: 0 12px 30px rgba(0,160,51,0.2);
+    border-color: rgba(0,160,51,0.3);
+  }
+  15% {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,160,51,0.4);
+    border-color: rgba(0,160,51,0.6);
+  }
+  30% {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 18px 35px rgba(0,160,51,0.35);
+    border-color: rgba(0,160,51,0.5);
+  }
+  60% {
+    transform: translateY(-6px) scale(1);
+    box-shadow: 0 15px 30px rgba(0,160,51,0.25);
+    border-color: rgba(0,160,51,0.4);
+  }
+  85% {
+    transform: translateY(-3px) scale(1);
+    box-shadow: 0 8px 20px rgba(0,160,51,0.15);
+    border-color: rgba(0,160,51,0.2);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-color: #e0e0e0;
+  }
+}
+
+
+
+/* ===== CARD UNIFICATA REPORT ===== */
+/* Card principale che contiene tutti i report */
+.unified-reports-card {
+  background: white; /* Sfondo bianco standardizzato */
+  border: 1px solid #e0e0e0; /* Bordo standardizzato */
+  border-radius: 16px; /* Angoli arrotondati standardizzati */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Ombra standardizzata */
+  margin: 30px auto; /* Margini con centratura */
+  max-width: 1000px; /* Larghezza massima */
+  position: relative; /* Per elementi posizionati */
+  overflow: hidden; /* Nasconde overflow */
+  transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Effetto hover sulla card unificata */
+.unified-reports-card:hover {
+  transform: translateY(-5px); /* Solleva standardizzato */
+  box-shadow: 0 8px 25px rgba(0,160,51,0.15); /* Ombra più pronunciata e verde */
+  border-color: rgba(0,160,51,0.3); /* Bordo verde */
+}
+
+/* Barra colorata che appare sopra la card unificata al hover */
+.unified-reports-card::before {
+  content: ''; /* Elemento vuoto */
+  position: absolute; /* Posizionamento assoluto */
+  top: 0; /* In cima alla card */
+  left: 0; /* A sinistra */
+  right: 0; /* A destra */
+  height: 3px; /* Altezza della barra */
+  background: linear-gradient(90deg, #00a033, #00d641); /* Gradiente verde Enel */
+  transform: scaleX(0); /* Inizialmente nascosta */
+  transition: transform 0.3s ease; /* Animazione di apparizione */
+}
+
+/* Mostra la barra colorata al hover */
+.unified-reports-card:hover::before {
+  transform: scaleX(1); /* Mostra la barra a larghezza completa */
+}
+
+/* Header della card unificata */
+.unified-reports-header {
+  padding: 30px 30px 20px; /* Padding generoso */
+  display: flex; /* Layout flex */
+  align-items: flex-start; /* Allinea dall'alto */
+  gap: 25px; /* Spazio tra icona e contenuto */
+  border-bottom: 1px solid #f0f0f0; /* Separatore sottile */
+}
+
+/* Icona principale della card unificata */
+.unified-reports-icon {
+  background: linear-gradient(135deg, #00a033 0%, #00d641 100%); /* Gradiente verde Enel */
+  color: white; /* Icona bianca */
+  width: 80px; /* Larghezza maggiore per importanza */
+  height: 80px; /* Altezza maggiore per importanza */
+  border-radius: 24px; /* Angoli arrotondati proporzionali */
+  display: flex; /* Layout flex per centrare */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  font-size: 2rem; /* Dimensione icona maggiore */
+  flex-shrink: 0; /* Non si comprime */
+  box-shadow: 0 4px 15px rgba(0,160,51,0.3); /* Ombra verde */
+  transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Effetto hover sull'icona principale */
+.unified-reports-card:hover .unified-reports-icon {
+  transform: scale(1.05) rotate(5deg); /* Ingrandisce e ruota leggermente */
+  box-shadow: 0 6px 20px rgba(0,160,51,0.4); /* Ombra più intensa */
+}
+
+/* Contenuto introduttivo della card */
+.unified-reports-intro {
+  flex: 1; /* Occupa spazio disponibile */
+}
+
+/* Titolo della sezione report */
+.unified-reports-intro h3 {
+  color: #333;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem); /* Allineato con la gerarchia generale */
+  font-weight: 600; /* Coerente con altri h3 */
+  margin: 0 0 15px 0;
+  line-height: 1.3;
+}
+
+/* Descrizione introduttiva */
+.unified-reports-intro p {
+  color: #555; /* Colore coerente con altri paragrafi */
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  line-height: 1.5; /* Altezza di riga standardizzata */
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Lista dei report */
+.reports-list {
+  padding: 0; /* Nessun padding */
+}
+
+/* Singolo item del report */
+.report-item {
+  padding: 25px 30px; /* Padding generoso */
+  border-bottom: 1px solid #f0f0f0; /* Separatore tra report */
+  display: flex; /* Layout flex */
+  align-items: center; /* Allinea verticalmente */
+  gap: 20px; /* Spazio tra elementi */
+  transition: all 0.3s ease; /* Animazione fluida */
+  position: relative; /* Per elementi posizionati */
+}
+
+/* Rimuove il bordo dall'ultimo item */
+.report-item:last-child {
+  border-bottom: none; /* Nessun bordo per l'ultimo */
+}
+
+/* Effetto hover sui singoli report */
+.report-item:hover {
+  background: rgba(0,160,51,0.02); /* Sfondo verde molto leggero */
+  transform: translateX(5px); /* Sposta leggermente a destra */
+}
+
+/* Icona del singolo report */
+.report-item-icon {
+  background: linear-gradient(135deg, rgba(0,160,51,0.1) 0%, rgba(0,160,51,0.2) 100%); /* Sfondo verde leggero */
+  color: #00a033; /* Colore verde Enel */
+  width: 50px; /* Larghezza compatta */
+  height: 50px; /* Altezza compatta */
+  border-radius: 14px; /* Angoli arrotondati */
+  display: flex; /* Layout flex per centrare */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  font-size: 1.3rem; /* Dimensione icona */
+  flex-shrink: 0; /* Non si comprime */
+  transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Effetto hover sull'icona del report */
+.report-item:hover .report-item-icon {
+  background: linear-gradient(135deg, rgba(0,160,51,0.2) 0%, rgba(0,160,51,0.3) 100%); /* Sfondo più intenso */
+  transform: scale(1.1); /* Ingrandimento */
+}
+
+/* Contenuto del singolo report */
+.report-item-content {
+  flex: 1; /* Occupa spazio disponibile */
+  min-width: 0; /* Previene overflow */
+}
+
+/* Titolo del singolo report */
+.report-item-content h4 {
+  color: #333; /* Colore grigio scuro */
+  font-size: clamp(1rem, 2vw, 1.2rem); /* Dimensione responsive */
+  font-weight: 600; /* Peso semi-grassetto */
+  margin: 0 0 8px 0; /* Margini ottimizzati */
+  line-height: 1.3; /* Altezza di riga */
+}
+
+/* Descrizione del report */
+.report-item-description {
+  color: #666; /* Grigio medio */
+  font-size: 0.9rem; /* Dimensione ridotta */
+  line-height: 1.4; /* Altezza di riga */
+  margin: 0 0 8px 0; /* Spazio sotto */
+}
+
+/* Data del report */
+.report-item-date {
+  color: #00a033; /* Verde Enel */
+  font-size: 0.85rem; /* Dimensione piccola */
+  font-weight: 500; /* Peso medio */
+  margin: 0; /* Nessun margine */
+}
+
+/* Area azione (pulsante download) */
+.report-item-action {
+  flex-shrink: 0; /* Non si comprime */
+}
+
+/* Pulsante download unificato */
+.download-btn-unified {
+  background: linear-gradient(135deg, #00a033 0%, #00d641 100%); /* Gradiente verde Enel */
+  color: white; /* Testo bianco */
+  border: none; /* Nessun bordo */
+  padding: 12px 20px; /* Padding ottimizzato */
+  border-radius: 8px; /* Angoli arrotondati */
+  cursor: pointer; /* Cursore pointer */
+  transition: all 0.3s ease; /* Animazione fluida */
+  font-size: 0.9rem; /* Dimensione testo */
+  font-weight: 500; /* Peso medio */
+  min-height: 44px; /* Altezza minima per accessibilità */
+  display: inline-flex; /* Layout flex inline */
+  align-items: center; /* Allinea contenuto */
+  gap: 8px; /* Spazio tra icona e testo */
+  justify-content: center; /* Centra contenuto */
+  white-space: nowrap; /* Previene wrapping */
+}
+
+/* Effetto hover sul pulsante unificato */
+.download-btn-unified:hover:not(:disabled) {
+  background: linear-gradient(135deg, #008029 0%, #00a033 100%); /* Gradiente più scuro */
+  transform: translateY(-2px); /* Solleva il pulsante */
+  box-shadow: 0 4px 12px rgba(0,160,51,0.3); /* Ombra verde */
+}
+
+/* Icone nei pulsanti unificati */
+.download-btn-unified i {
+  font-size: 1em; /* Dimensione icona */
+  transition: transform 0.3s ease; /* Animazione per movimento */
+}
+
+/* Movimento dell'icona al hover */
+.download-btn-unified:hover i {
+  transform: translateX(2px); /* Sposta icona a destra */
+}
+
+/* ===== RESPONSIVE CARD UNIFICATA ===== */
+/* Adattamenti per tablet */
+@media (max-width: 768px) {
+  .unified-reports-header {
+    flex-direction: column; /* Layout verticale */
+    text-align: center; /* Centra contenuto */
+    padding: 25px 20px 15px; /* Padding ridotto */
+    gap: 20px; /* Spazio ridotto */
+  }
+
+  .unified-reports-icon {
+    align-self: center; /* Centra icona */
+    width: 70px; /* Dimensione ridotta */
+    height: 70px; /* Dimensione ridotta */
+    font-size: 1.8rem; /* Font ridotto */
+  }
+
+  .report-item {
+    flex-direction: column; /* Layout verticale */
+    text-align: center; /* Centra contenuto */
+    padding: 20px; /* Padding ridotto */
+    gap: 15px; /* Spazio ridotto */
+  }
+
+  .report-item-content {
+    text-align: center; /* Centra testo */
+  }
+
+  .download-btn-unified {
+    width: 100%; /* Larghezza completa */
+    max-width: 250px; /* Larghezza massima */
+  }
+}
+
+/* Adattamenti per smartphone */
+@media (max-width: 480px) {
+  .unified-reports-card {
+    margin: 20px 10px; /* Margini ridotti */
+  }
+
+  .unified-reports-header {
+    padding: 20px 15px 10px; /* Padding minimale */
+  }
+
+  .unified-reports-icon {
+    width: 60px; /* Dimensione compatta */
+    height: 60px; /* Dimensione compatta */
+    font-size: 1.5rem; /* Font ridotto */
+  }
+
+  .unified-reports-intro h3 {
+    font-size: clamp(1.1rem, 4vw, 1.3rem); /* Dimensione ridotta */
+  }
+
+  .unified-reports-intro p {
+    font-size: clamp(0.9rem, 3.5vw, 1rem); /* Dimensione ridotta */
+  }
+
+  .report-item {
+    padding: 15px 10px; /* Padding minimale */
+  }
+
+  .report-item-icon {
+    width: 45px; /* Dimensione molto ridotta */
+    height: 45px; /* Dimensione molto ridotta */
+    font-size: 1.1rem; /* Font ridotto */
+  }
+
+  .report-item-content h4 {
+    font-size: clamp(0.95rem, 4vw, 1.1rem); /* Dimensione compatta */
+  }
+
+  .report-item-description {
+    font-size: 0.85rem; /* Font più piccolo */
+  }
+
+  .download-btn-unified {
+    padding: 12px 16px; /* Padding ottimizzato */
+    font-size: 0.85rem; /* Font ridotto */
+    max-width: 200px; /* Larghezza massima ridotta */
+  }
+}
+
+/* ===== PULSANTI ===== */
+/* Stili base per tutti i pulsanti */
+button {
+  background: linear-gradient(135deg, #00a033 0%, #00d641 100%); /* Gradiente verde Enel */
+  color: white; /* Testo bianco */
+  border: none; /* Rimuove bordo predefinito */
+  padding: 12px 24px; /* Spaziatura interna */
+  border-radius: 8px; /* Angoli arrotondati */
+  cursor: pointer; /* Indica che è cliccabile */
+  transition: all 0.3s ease; /* Animazione fluida */
+  font-size: 0.95em; /* Dimensione del testo */
+  font-weight: 500; /* Peso del font */
+  min-height: 44px; /* Altezza minima per accessibilità touch */
+  display: inline-flex; /* Layout flex inline */
+  align-items: center; /* Allinea contenuto verticalmente */
+  gap: 8px; /* Spazio tra icona e testo */
+  justify-content: center; /* Centra il contenuto */
+}
+
+/* Effetto hover sui pulsanti (esclude quelli disabilitati) */
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #008029 0%, #00a033 100%); /* Gradiente più scuro */
+  transform: translateY(-2px); /* Solleva il pulsante */
+  box-shadow: 0 4px 12px rgba(0,160,51,0.3); /* Ombra verde */
+}
+
+/* Effetto click sui pulsanti */
+button:active {
+  transform: translateY(0); /* Riporta alla posizione originale */
+}
+
+/* Stili per pulsanti disabilitati */
+button:disabled {
+  opacity: 0.7; /* Riduce l'opacità */
+  cursor: not-allowed; /* Cambia il cursore */
+  transform: none; /* Disabilita trasformazioni */
+}
+
+/* Stili specifici per i pulsanti di download */
+.download-btn {
+  width: 200px; /* Larghezza fissa */
+  max-width: 200px; /* Larghezza massima */
+  min-width: 200px; /* Larghezza minima */
+}
+
+/* Icone nei pulsanti di download */
+.download-btn i {
+  font-size: 1.1em; /* Dimensione dell'icona */
+  transition: transform 0.3s ease; /* Animazione per movimento icona */
+}
+
+/* Movimento dell'icona al hover del pulsante */
+button:hover i {
+  transform: translateX(2px); /* Sposta l'icona leggermente a destra */
+}
+
+/* ===== SEZIONE INFORMATIVA ===== */
+/* Sezione con informazioni aziendali strutturate */
+.info-section {
+  margin: 60px 0; /* Margini verticali ampi */
+  padding: 0 20px; /* Padding orizzontale */
+  background: linear-gradient(135deg, #f8fffe 0%, #f0f8f5 100%); /* Sfondo verde molto tenue per alternanza */
+  position: relative; /* Per elementi decorativi */
+}
+
+/* Elemento decorativo per la sezione info */
+.info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a033, #00d641);
+  opacity: 0.3;
+}
+
+/* Contenitore interno della sezione informativa */
+.info-container {
+  max-width: 1200px; /* Larghezza massima */
+  margin: 0 auto; /* Centra il contenitore */
+  padding: 60px 20px; /* Spaziatura interna standardizzata */
+}
+
+/* Titoli delle sezioni con margini specifici */
+.info-section h2,
+.video-section h2,
+.video-section h3 {
+  margin-bottom: 50px; /* Spazio ampio sotto i titoli delle sezioni */
+}
+
+/* Griglia per le card informative */
+.info-grid {
+  display: grid; /* Layout a griglia */
+  grid-template-columns: repeat(2, 1fr); /* Due colonne uguali */
+  grid-template-rows: repeat(2, 1fr); /* Due righe uguali */
+  gap: 30px; /* Spazio tra le card */
+  margin-top: 40px; /* Spazio sopra la griglia */
+}
+
+/* Singola card informativa */
+.info-card {
+  background: white; /* Sfondo bianco */
+  padding: 30px; /* Spaziatura interna */
+  border: 1px solid #e0e0e0; /* Bordo grigio chiaro standardizzato */
+  border-radius: 16px; /* Angoli arrotondati */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Ombra sottile standardizzata */
+  transition: all 0.3s ease; /* Animazione fluida */
+  position: relative; /* Per elementi posizionati assolutamente */
+  overflow: hidden; /* Nasconde elementi che eccedono */
+  cursor: pointer; /* Indica che la card è cliccabile */
+}
+
+/* Effetto hover sulle card informative */
+.info-card:hover {
+  transform: translateY(-5px); /* Solleva la card */
+  box-shadow: 0 8px 25px rgba(0,160,51,0.15); /* Ombra più pronunciata e verde */
+  border-color: rgba(0,160,51,0.3); /* Bordo verde */
+}
+
+/* Barra colorata che appare sopra la card al hover (standardizzata) */
+.info-card::before {
+  content: ''; /* Elemento vuoto */
+  position: absolute; /* Posizionamento assoluto */
+  top: 0; /* In cima alla card */
+  left: 0; /* A sinistra */
+  right: 0; /* A destra */
+  height: 3px; /* Altezza della barra */
+  background: linear-gradient(90deg, #00a033, #00d641); /* Gradiente verde Enel */
+  transform: scaleX(0); /* Inizialmente nascosta */
+  transition: transform 0.3s ease; /* Animazione di apparizione */
+}
+
+/* Mostra la barra colorata al hover */
+.info-card:hover::before {
+  transform: scaleX(1); /* Mostra la barra a larghezza completa */
+}
+
+
+
+/* Numero identificativo della card informativa */
+.info-number {
+  font-size: 1.8rem; /* Dimensione grande */
+  font-weight: bold; /* Grassetto */
+  color: #00a033; /* Colore verde Enel */
+  margin-bottom: 15px; /* Spazio sotto il numero */
+  display: block; /* Visualizzazione a blocco */
+}
+
+/* Contenuto testuale delle card informative */
+.info-content h3 {
+  color: #333; /* Colore grigio scuro */
+  margin: 0 0 15px 0; /* Margini ottimizzati */
+  font-size: 1.2rem; /* Dimensione del titolo */
+  font-weight: 600; /* Peso semi-grassetto */
+  line-height: 1.4; /* Altezza di riga per leggibilità */
+}
+
+/* Paragrafi delle card informative */
+.info-content p {
+  color: #444; /* Grigio più scuro per miglior contrasto */
+  line-height: 1.6; /* Altezza di riga per leggibilità */
+  margin: 0; /* Rimuove margini */
+  font-size: 0.95rem; /* Dimensione leggermente ridotta */
+  font-weight: 400; /* Peso normale per leggibilità */
+}
+
+/* Icona decorativa delle card informative - Stile standardizzato come vision box */
+.info-icon {
+  position: absolute; /* Posizionamento assoluto */
+  top: 30px; /* Distanza dal bordo superiore */
+  right: 30px; /* Distanza dal bordo destro */
+  width: 60px; /* Larghezza aumentata per coerenza */
+  height: 60px; /* Altezza aumentata per coerenza */
+  background: linear-gradient(135deg, #00a033 0%, #00d641 100%); /* Gradiente verde Enel come vision box */
+  border-radius: 16px; /* Angoli arrotondati come vision box invece di circolari */
+  display: flex; /* Layout flex per centrare l'icona */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  color: white; /* Icona bianca come vision box */
+  font-size: 1.5rem; /* Dimensione dell'icona aumentata */
+  box-shadow: 0 4px 15px rgba(0,160,51,0.3); /* Ombra verde come vision box */
+  transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Effetto hover sull'icona delle card informative - Standardizzato come vision box */
+.info-card:hover .info-icon {
+  transform: scale(1.05) rotate(5deg); /* Ingrandisce e ruota leggermente come vision box */
+  box-shadow: 0 6px 20px rgba(0,160,51,0.4); /* Ombra più intensa come vision box */
+}
+
+/* ===== SEZIONE VIDEO ===== */
+/* Sezione contenente il video aziendale */
+.video-section {
+  margin: 60px 0; /* Margini verticali standardizzati */
+  padding: 60px 20px; /* Padding standardizzato come altre sezioni */
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%); /* Sfondo grigio chiaro alternato */
+  position: relative; /* Per elementi decorativi */
+}
+
+/* Elementi decorativi per la sezione video */
+.video-section::before,
+.video-section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00a033, #00d641);
+  border-radius: 2px;
+}
+
+.video-section::before {
+  top: 0;
+}
+
+.video-section::after {
+  bottom: 0;
+}
+
+
+
+/* Contenitore del video con stili ottimizzati */
+.video-container {
+  width: 100%; /* Larghezza completa */
+  max-width: 1000px; /* Larghezza massima per dispositivi grandi */
+  margin: 0 auto; /* Centra il contenitore */
+  border-radius: 12px; /* Angoli arrotondati */
+  overflow: hidden; /* Nasconde angoli del video per rispettare border-radius */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Ombra pronunciata */
+}
+
+/* Video a larghezza completa */
+.full-width-video {
+  width: 100%; /* Larghezza completa del contenitore */
+  height: auto; /* Altezza automatica per mantenere proporzioni */
+  display: block; /* Visualizzazione a blocco */
+  max-height: 600px; /* Altezza massima per schermi grandi */
+}
+
+/* ===== STILI SOTTOTITOLI VIDEO ===== */
+/* Personalizzazione dei sottotitoli del video per migliorare leggibilità e estetica */
+.video-container video::cue {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 40, 20, 0.85) 100%) !important; /* Sfondo scuro con gradiente */
+  color: #ffffff !important; /* Testo bianco */
+  font-size: 0.75em !important; /* Dimensione del font piccola e discreta */
+  font-family: 'Segoe UI', 'Arial', sans-serif !important; /* Font coerente con il sito */
+  font-weight: 400 !important; /* Peso normale del font */
+  line-height: 1.3 !important; /* Altezza di riga ottimizzata */
+  padding: 8px 12px !important; /* Spaziatura interna compatta */
+  margin: 0 auto 50px auto !important; /* Posizionamento in basso con margine ampio */
+  border-radius: 8px !important; /* Angoli arrotondati */
+  text-align: center !important; /* Testo centrato */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important; /* Ombra pronunciata per leggibilità */
+  border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Bordo sottile bianco trasparente */
+  backdrop-filter: blur(8px); /* Filtro di sfocatura per sfondo */
+  -webkit-backdrop-filter: blur(8px); /* Compatibilità WebKit */
+  max-width: 70% !important; /* Larghezza massima per non coprire troppo video */
+  letter-spacing: 0.1px !important; /* Spaziatura tra lettere per leggibilità */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important; /* Ombra del testo per contrasto */
+}
+
+/* Stile speciale per sottotitoli con speaker identificato */
+.video-container video::cue(.speaker) {
+  color: #00d641; /* Colore verde per distinguere i parlanti */
+  font-weight: 500; /* Peso leggermente maggiore */
+}
+
+/* Animazioni per l'apparizione dei sottotitoli */
+.video-container video::cue(:future) {
+  opacity: 0; /* Sottotitoli futuri invisibili */
+  transform: translateY(10px); /* Posizionati leggermente più in basso */
+}
+
+/* Sottotitolo correntemente visualizzato */
+.video-container video::cue(:current) {
+  opacity: 1; /* Completamente visibile */
+  transform: translateY(0); /* Posizione normale */
+  transition: all 0.3s ease-out; /* Animazione fluida di apparizione */
+}
+
+/* Sottotitoli già passati */
+.video-container video::cue(:past) {
+  opacity: 0; /* Invisibili */
+  transform: translateY(-5px); /* Leggermente spostati verso l'alto */
+}
+
+/* ===== RESPONSIVE DESIGN PER SOTTOTITOLI ===== */
+/* Adattamento dei sottotitoli per tablet */
+@media (max-width: 768px) {
+  .video-container video::cue {
+    font-size: 0.7em; /* Font più piccolo per tablet */
+    padding: 6px 10px; /* Padding ridotto */
+    max-width: 80%; /* Larghezza leggermente maggiore */
+    border-radius: 6px; /* Angoli meno arrotondati */
+    line-height: 1.2; /* Altezza di riga ridotta */
+    margin: 0 auto 40px auto; /* Margine inferiore ridotto */
+  }
+}
+
+/* Adattamento dei sottotitoli per smartphone */
+@media (max-width: 480px) {
+  .video-container video::cue {
+    font-size: 0.65em; /* Font ancora più piccolo per mobile */
+    padding: 5px 8px; /* Padding ulteriormente ridotto */
+    max-width: 85%; /* Larghezza maggiore per schermi piccoli */
+    border-radius: 5px; /* Angoli minimamente arrotondati */
+    margin: 0 auto 35px auto; /* Margine inferiore adeguato per mobile */
+  }
+}
+
+/* ===== FOOTER ===== */
+/* Piè di pagina del sito con informazioni aziendali */
+footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #3c4e60 100%); /* Sfondo scuro con gradiente */
+  color: white; /* Testo bianco */
+  padding: 30px 0 20px; /* Spaziatura interna ridotta */
+  margin-top: 60px; /* Spazio ridotto dal contenuto principale */
+}
+
+/* Contenuto interno del footer organizzato in layout flex */
+.footer-content {
+  max-width: 1200px; /* Larghezza massima */
+  margin: 0 auto; /* Centra il contenitore */
+  display: flex; /* Layout flex per controllo migliore */
+  justify-content: center; /* Centra il contenuto */
+  align-items: center; /* Allinea al centro */
+  padding: 0 20px; /* Padding orizzontale */
+  text-align: center; /* Centra il testo */
+}
+
+/* Singola sezione del footer */
+.footer-section {
+  flex: 1; /* Occupa spazio disponibile */
+  min-width: 200px; /* Larghezza minima */
+  max-width: 300px; /* Larghezza massima per controllo */
+}
+
+/* Sezione brand con logo */
+.footer-section:first-child {
+  flex: 0 0 auto; /* Non si espande, dimensione contenuto */
+  min-width: 250px; /* Larghezza minima per sezione brand */
+}
+
+/* Logo Enel nel footer */
+.footer-logo {
+  height: 30px; /* Altezza ridotta del logo */
+  margin-bottom: 12px; /* Spazio ridotto sotto il logo */
+  filter: brightness(0) invert(1); /* Converte il logo in bianco */
+}
+
+/* Titoli delle sezioni del footer */
+.footer-section h3 {
+  margin-bottom: 12px;
+  font-size: clamp(1rem, 2vw, 1.1rem); /* Dimensione responsive */
+  color: #ecf0f1;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Paragrafi nel footer */
+.footer-section p {
+  margin: 4px 0;
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem); /* Dimensione responsive per leggibilità */
+  line-height: 1.4;
+  color: #bdc3c7;
+}
+
+/* Link nel footer */
+.footer-section a {
+  color: #ecf0f1;
+  text-decoration: none;
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem); /* Coerente con i paragrafi */
+  transition: all 0.3s ease;
+  display: inline-block;
+  line-height: 1.4; /* Altezza di riga coerente */
+}
+
+/* Effetti hover e focus sui link del footer */
+.footer-section a:hover,
+.footer-section a:focus {
+  color: #ffffff; /* Colore bianco puro */
+  text-decoration: underline; /* Aggiunge sottolineatura */
+  transform: translateX(4px); /* Sposta leggermente a destra */
+}
+
+/* ===== MEDIA QUERIES RESPONSIVE ===== */
+
+/* ===== STILI PER TABLET (768px e inferiori) ===== */
+@media (max-width: 768px) {
+  /* Adattamenti per l'header su tablet */
+  header {
+    padding: 12px 15px; /* Padding ridotto */
+    flex-wrap: wrap; /* Permette il wrapping degli elementi */
+    gap: 15px; /* Spazio tra gli elementi wrappati */
+  }
+
+  /* Riduce l'altezza della sezione hero su tablet */
+  .hero {
+    height: 50vh; /* Altezza ridotta al 50% del viewport */
+    min-height: 300px; /* Altezza minima ridotta */
+  }
+
+  /* Adattamenti del contenitore report per tablet */
+  .reports-container {
+    padding: 30px 15px; /* Padding ridotto */
+  }
+
+  /* Griglia report a colonna singola su tablet */
+  .reports-grid {
+    grid-template-columns: 1fr; /* Una sola colonna */
+    gap: 25px; /* Spazio ridotto tra le card */
+  }
+
+  /* Adattamenti delle card report per tablet */
+  .report-card {
+    padding: 25px; /* Padding ridotto */
+    gap: 15px; /* Spazio ridotto tra elementi */
+  }
+
+  /* Spazio ridotto tra icone social su tablet */
+  .social-icons {
+    gap: 12px; /* Gap ridotto */
+  }
+
+  /* Adattamenti sezione informativa per tablet */
+  .info-section {
+    margin: 40px 0; /* Margini ridotti */
+  }
+
+  .info-container {
+    padding: 40px 15px; /* Padding ridotto */
+  }
+
+  .info-grid {
+    grid-template-columns: repeat(2, 1fr); /* Mantiene 2 colonne */
+    grid-template-rows: repeat(2, 1fr); /* Mantiene 2 righe */
+    gap: 20px; /* Spazio ridotto */
+  }
+
+  .info-card {
+    padding: 25px; /* Padding ridotto */
+  }
+
+  .info-icon {
+    width: 45px; /* Larghezza ridotta */
+    height: 45px; /* Altezza ridotta */
+    font-size: 1.1rem; /* Font ridotto */
+  }
+
+  /* Adattamenti sezione video per tablet */
+  .video-section {
+    margin: 40px 0; /* Margini ridotti */
+    padding: 0 15px; /* Padding ridotto */
+  }
+
+  /* Footer ottimizzato per tablet */
+  footer {
+    padding: 25px 0 15px; /* Padding ridotto per tablet */
+    margin-top: 50px; /* Margine ridotto */
+  }
+
+  .footer-content {
+    gap: 30px; /* Spazio ridotto tra sezioni */
+  }
+
+  .footer-section {
+    min-width: 180px; /* Larghezza minima ridotta */
+    max-width: 250px; /* Larghezza massima ridotta */
+  }
+}
+
+/* ===== STILI PER SMARTPHONE (480px e inferiori) ===== */
+@media (max-width: 480px) {
+  /* Header ottimizzato per touch */
+  header {
+    flex-direction: column; /* Layout verticale */
+    text-align: center; /* Centra il contenuto */
+    gap: 15px; /* Spazio tra elementi */
+    padding: 15px 10px; /* Padding ottimizzato */
+    position: sticky; /* Mantiene sticky per consistenza */
+    top: 0; /* Rimane in cima */
+    min-height: 90px; /* Altezza maggiore per layout verticale */
+  }
+
+  /* Logo adattato per mobile */
+  .logo {
+    height: 35px; /* Altezza leggermente maggiore per visibilità */
+    max-width: 150px; /* Larghezza massima per controllo */
+  }
+
+  /* Hero ottimizzata per visualizzazione mobile */
+  .hero {
+    height: 35vh; /* Altezza ridotta per lasciare spazio al contenuto */
+    min-height: 220px; /* Altezza minima adeguata */
+    max-height: 300px; /* Altezza massima controllata */
+  }
+
+  /* Titoli responsive ottimizzati per mobile */
+  h1 {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem); /* Dimensione bilanciata per mobile */
+    line-height: 1.25;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  h2,
+  .info-section h2,
+  .video-section h2,
+  .reports-subtitle {
+    font-size: clamp(1.3rem, 4.5vw, 1.7rem); /* Proporzione mantenuta con h1 */
+    margin-bottom: 30px;
+  }
+
+  h3,
+  .video-section h3 {
+    font-size: clamp(1.1rem, 4vw, 1.5rem); /* Dimensione proporzionale */
+    margin-bottom: 25px;
+  }
+
+  h4,
+  .report-item-content h4,
+  .info-content h3 {
+    font-size: clamp(1rem, 3.5vw, 1.25rem); /* Mantenimento della gerarchia */
+    margin-bottom: 10px;
+  }
+
+  .subtitle {
+    font-size: clamp(0.95rem, 3.8vw, 1.15rem); /* Proporzionale al titolo principale */
+    margin-bottom: 35px;
+    padding: 0 8px;
+    line-height: 1.4; /* Ottimizzato per mobile */
+  }
+
+  /* Contenitore report ottimizzato per touch */
+  .reports-container {
+    padding: 25px 8px; /* Padding bilanciato */
+  }
+
+  /* Griglia report con spacing ottimizzato */
+  .reports-grid {
+    gap: 20px; /* Spazio più compatto tra card */
+    margin-top: 25px; /* Margine ridotto */
+  }
+
+  /* Card report completamente ridisegnate per mobile */
+  .report-card {
+    padding: 20px 15px; /* Padding asimmetrico ottimizzato */
+    flex-direction: column; /* Layout verticale */
+    text-align: center; /* Centra tutto il contenuto */
+    gap: 18px; /* Spazio tra elementi */
+    border-radius: 12px; /* Angoli meno pronunciati */
+    margin: 0 5px; /* Margini laterali per spazio */
+  }
+
+  /* Icona del report ridimensionata per mobile */
+  .report-icon {
+    align-self: center; /* Centra l'icona */
+    width: 50px; /* Dimensione ridotta per mobile */
+    height: 50px; /* Dimensione ridotta per mobile */
+    font-size: 1.3rem; /* Font icon ridotto proporzionalmente */
+    border-radius: 14px; /* Mantiene angoli arrotondati proporzionali */
+  }
+
+  /* Titoli card ottimizzati per mobile */
+  .report-content h2 {
+    font-size: clamp(1rem, 4vw, 1.2rem); /* Dimensione responsive */
+    line-height: 1.2; /* Altezza di riga compatta */
+    margin-bottom: 8px; /* Spazio ridotto */
+  }
+
+  /* Data e size info ottimizzate */
+  .report-date {
+    font-size: 0.85em; /* Dimensione ridotta */
+    margin-bottom: 4px; /* Spazio minimo */
+  }
+
+  .report-size {
+    font-size: 0.8em; /* Dimensione molto ridotta */
+    margin-bottom: 15px; /* Spazio prima del pulsante */
+  }
+
+  /* Pulsanti download ottimizzati per touch */
+  .download-btn {
+    width: 220px; /* Larghezza fissa per consistenza */
+    max-width: 100%; /* Si adatta al contenitore se necessario */
+    min-width: 220px; /* Larghezza minima per uniformità */
+    min-height: 48px; /* Altezza minima per accessibilità touch */
+    font-size: 0.9rem; /* Dimensione font appropriata */
+    padding: 14px 20px; /* Padding generoso per touch */
+    border-radius: 10px; /* Angoli arrotondati */
+    margin: 0 auto; /* Centra il pulsante */
+  }
+
+  /* Icone social ottimizzate per touch */
+  .social-icons {
+    gap: 20px; /* Spazio maggiore tra icone per touch */
+    justify-content: center; /* Centra le icone */
+    flex-wrap: wrap; /* Permette wrapping se necessario */
+  }
+
+  .social-icons a {
+    font-size: 20px; /* Dimensione maggiore per visibilità */
+    padding: 10px; /* Padding generoso per area touch */
+    min-width: 44px; /* Larghezza minima per accessibilità */
+    min-height: 44px; /* Altezza minima per accessibilità */
+  }
+
+  /* Sezione info ridisegnata per mobile */
+  .info-section {
+    margin: 40px 0; /* Margini bilanciati */
+    padding: 0 8px; /* Padding laterale minimo */
+  }
+
+  .info-container {
+    padding: 30px 8px; /* Padding ottimizzato */
+  }
+
+  /* Griglia info a colonna singola per mobile */
+  .info-grid {
+    grid-template-columns: 1fr; /* Una sola colonna */
+    grid-template-rows: auto; /* Righe automatiche */
+    gap: 20px; /* Spazio compatto */
+  }
+
+  .info-card {
+    padding: 20px 15px; /* Padding asimmetrico */
+    text-align: left; /* Allineamento a sinistra per leggibilità */
+    border-left: 3px solid #00a033; /* Bordo più sottile */
+  }
+
+  /* Numero info riprogettato per mobile */
+  .info-number {
+    font-size: 1.3rem; /* Dimensione ridotta ma visibile */
+    margin-bottom: 10px; /* Spazio compatto */
+    text-align: left; /* Allineamento a sinistra */
+  }
+
+  /* Icona info mobile-friendly */
+  .info-icon {
+    position: absolute; /* Torna a posizionamento assoluto */
+    top: 15px; /* Posizione in alto */
+    right: 15px; /* Posizione a destra */
+    width: 45px; /* Dimensione aumentata per coerenza */
+    height: 45px; /* Dimensione aumentata per coerenza */
+    font-size: 1.1rem; /* Font aumentato per visibilità */
+    border-radius: 12px; /* Angoli arrotondati ridotti per mobile */
+  }
+
+  /* Contenuto info ottimizzato */
+  .info-content h3 {
+    font-size: 1rem; /* Dimensione appropriata */
+    line-height: 1.3; /* Altezza di riga compatta */
+    margin-bottom: 8px; /* Spazio ridotto */
+    padding-right: 45px; /* Spazio per l'icona */
+  }
+
+  .info-content p {
+    font-size: 0.85rem; /* Dimensione ridotta ma leggibile */
+    line-height: 1.5; /* Altezza di riga per leggibilità */
+    padding-right: 10px; /* Spazio dal bordo */
+  }
+
+  /* Video sezione ottimizzata per mobile */
+  .video-section {
+    margin: 30px 0; /* Margini ridotti */
+    padding: 0 8px; /* Padding laterale minimo */
+  }
+
+  .video-section h2 {
+    font-size: clamp(1.2rem, 4vw, 1.5rem); /* Dimensione responsive */
+    margin-bottom: 20px; /* Spazio ridotto */
+    padding: 0 5px; /* Padding per leggibilità */
+  }
+
+  /* Container video mobile-friendly */
+  .video-container {
+    margin: 0 auto; /* Centra il video */
+    border-radius: 8px; /* Angoli meno pronunciati */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Ombra ridotta */
+  }
+
+  .full-width-video {
+    max-height: 250px; /* Altezza massima controllata per mobile */
+    border-radius: 8px; /* Angoli coerenti */
+  }
+
+  /* Footer mobile ottimizzato */
+  .footer-content {
+    text-align: center; /* Mantiene centratura */
+    padding: 0 15px; /* Padding laterale maggiore */
+  }
+
+  .footer-section {
+    max-width: none; /* Rimuove larghezza massima */
+    min-width: auto; /* Rimuove larghezza minima */
+  }
+
+  .footer-section h3 {
+    font-size: 1.1rem; /* Dimensione leggermente maggiore */
+    margin-bottom: 12px; /* Spazio appropriato */
+    color: #ffffff; /* Colore bianco puro per miglior contrasto */
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 0.9rem; /* Dimensione più leggibile */
+    line-height: 1.4; /* Altezza di riga più spaziosa */
+    margin-bottom: 6px; /* Spazio tra le righe */
+  }
+
+  /* Logo footer adattato */
+  .footer-logo {
+    height: 30px; /* Dimensione appropriata per mobile */
+    margin-bottom: 12px; /* Spazio adeguato */
+  }
+
+  /* Sezione contatti migliorata per mobile */
+  .footer-section address p {
+    margin-bottom: 8px; /* Spazio maggiore tra le righe di indirizzo */
+  }
+}
+
+/* ===== BREAKPOINT INTERMEDIO PER TABLET PICCOLI (576px - 768px) ===== */
+@media (max-width: 576px) and (min-width: 481px) {
+  /* Ottimizzazioni per tablet piccoli e grandi smartphone */
+  .reports-grid {
+    grid-template-columns: 1fr; /* Una colonna per migliore leggibilità */
+    gap: 25px; /* Spazio bilanciato */
+  }
+
+  .report-card {
+    max-width: 400px; /* Larghezza massima controllata */
+    margin: 0 auto; /* Centra le card */
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr; /* Una colonna per migliore usabilità */
+    gap: 25px; /* Spazio appropriato */
+  }
+}
+
+/* ===== STILI PER SMARTPHONE MOLTO PICCOLI (320px e inferiori) ===== */
+@media (max-width: 320px) {
+  /* Ottimizzazioni estreme per schermi molto piccoli */
+  body {
+    font-size: 14px; /* Font base ridotto */
+  }
+
+  header {
+    padding: 10px 5px; /* Padding minimale */
+  }
+
+  .hero {
+    height: 30vh; /* Altezza molto ridotta */
+    min-height: 180px; /* Minimo assoluto */
+  }
+
+  .reports-container {
+    padding: 15px 5px; /* Padding minimale */
+  }
+
+  .report-card {
+    padding: 15px 10px; /* Padding asimmetrico */
+    margin: 0; /* Rimuove margini */
+    border-radius: 8px; /* Angoli meno pronunciati */
+  }
+
+  .report-icon {
+    width: 45px; /* Dimensione ridotta per schermi molto piccoli */
+    height: 45px; /* Dimensione ridotta per schermi molto piccoli */
+    font-size: 1.2rem; /* Font ridotto proporzionalmente */
+    border-radius: 12px; /* Angoli arrotondati proporzionali */
+  }
+
+  .download-btn {
+    width: 200px; /* Larghezza adeguata per schermi piccoli */
+    max-width: 100%; /* Si adatta se necessario */
+    min-width: 200px; /* Larghezza minima per uniformità */
+    font-size: 0.8rem; /* Font ridotto */
+    padding: 12px 16px; /* Padding compatto */
+    min-height: 44px; /* Mantiene accessibilità touch */
+    margin: 0 auto; /* Centra il pulsante */
+  }
+
+  /* Dimensioni ottimizzate per schermi molto piccoli */
+  h1 {
+    font-size: clamp(1.4rem, 6.5vw, 1.8rem); /* Mantenimento della leggibilità */
+    margin-bottom: 15px;
+  }
+
+  h2,
+  .info-section h2,
+  .video-section h2,
+  .reports-subtitle {
+    font-size: clamp(1.2rem, 5.5vw, 1.5rem); /* Proporzione mantenuta */
+    margin-bottom: 25px;
+  }
+
+  h3,
+  .video-section h3 {
+    font-size: clamp(1.1rem, 5vw, 1.3rem);
+    margin-bottom: 20px;
+  }
+
+  h4,
+  .report-item-content h4,
+  .info-content h3 {
+    font-size: clamp(0.95rem, 4.5vw, 1.15rem);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: clamp(0.85rem, 4.2vw, 1.05rem); /* Leggibile ma compatto */
+    padding: 0 12px;
+    margin-bottom: 30px;
+    line-height: 1.35;
+  }
+
+  .info-card {
+    padding: 15px 10px; /* Padding molto ridotto */
+  }
+
+  .info-number {
+    font-size: 1.1rem; /* Dimensione compatta */
+  }
+
+  .info-content h3 {
+    font-size: 0.9rem; /* Font ridotto */
+    padding-right: 35px; /* Spazio per icona ridotta */
+  }
+
+  .info-content p {
+    font-size: 0.8rem; /* Font molto piccolo ma leggibile */
+  }
+
+  .info-icon {
+    width: 35px; /* Dimensione compatta ma visibile */
+    height: 35px; /* Dimensione compatta ma visibile */
+    font-size: 0.9rem; /* Font ridotto ma leggibile */
+    top: 12px; /* Posizione adeguata */
+    right: 10px; /* Posizione adeguata */
+    border-radius: 10px; /* Angoli arrotondati per schermi molto piccoli */
+  }
+
+  .footer-content {
+    padding: 0 10px; /* Padding più appropriato */
+    gap: 20px; /* Spazio mantenuto */
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 0.85rem; /* Font leggermente più grande per leggibilità */
+    line-height: 1.4; /* Altezza di riga appropriata */
+  }
+
+  .footer-section h3 {
+    font-size: 1rem; /* Dimensione titoli appropriata */
+    margin-bottom: 10px; /* Spazio sotto titoli */
+  }
+}
+
+/* ===== MIGLIORAMENTI TOUCH E USABILITÀ MOBILE ===== */
+@media (max-width: 768px) {
+  /* Migliora l'area touch per tutti gli elementi interattivi */
+  button,
+  .report-card,
+  .social-icons a,
+  .footer-section a {
+    min-height: 44px; /* Standard Apple per accessibilità touch */
+    min-width: 44px; /* Standard Apple per accessibilità touch */
+  }
+
+  /* Previene zoom automatico su input focus in iOS */
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* Previene zoom su iOS */
+  }
+
+  /* Ottimizza la scrollabilità */
+  body {
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling su iOS */
+    overflow-x: hidden; /* Previene scroll orizzontale indesiderato */
+  }
+
+  /* Migliora la visibilità del focus su mobile */
+  *:focus {
+    outline: 3px solid #00a033; /* Outline più spesso per mobile */
+    outline-offset: 3px; /* Offset maggiore per visibilità */
+  }
+}
+
+/* ===== MIGLIORAMENTI PER L'ACCESSIBILITÀ ===== */
+
+/* Supporto per modalità ad alto contrasto */
+@media (prefers-contrast: high) {
+  /* Aumenta il contrasto per le card */
+  .report-card {
+    border: 2px solid #333; /* Bordo più spesso e scuro */
+  }
+
+  /* Aumenta il contrasto per i pulsanti */
+  button {
+    border: 2px solid #00a033; /* Bordo verde per maggiore definizione */
+  }
+}
+
+/* Rispetta le preferenze utente per movimento ridotto */
+@media (prefers-reduced-motion: reduce) {
+  /* Disabilita tutte le animazioni per utenti che preferiscono movimento ridotto */
+  * {
+    animation-duration: 0.01ms !important; /* Durata animazione quasi nulla */
+    animation-iteration-count: 1 !important; /* Esegue animazione una sola volta */
+    transition-duration: 0.01ms !important; /* Durata transizione quasi nulla */
+  }
+}
+
+/* ===== STILI POP-UP ===== */
+/* Overlay di sfondo per il pop-up */
+.popup-overlay {
+  position: fixed; /* Posizionamento fisso per coprire tutto lo schermo */
+  top: 0; /* In cima alla pagina */
+  left: 0; /* A sinistra */
+  width: 100%; /* Larghezza completa */
+  height: 100%; /* Altezza completa */
+  background: rgba(0, 0, 0, 0.6); /* Sfondo scuro semitrasparente */
+  backdrop-filter: blur(5px); /* Effetto di sfocatura dello sfondo */
+  -webkit-backdrop-filter: blur(5px); /* Compatibilità WebKit */
+  display: flex; /* Layout flex per centrare il contenuto */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  z-index: 1000; /* Livello superiore per apparire sopra tutto */
+  opacity: 0; /* Inizialmente invisibile */
+  visibility: hidden; /* Nascosto di default */
+  transition: all 0.3s ease; /* Animazione fluida per apparizione */
+}
+
+/* Mostra il pop-up quando ha la classe 'show' */
+.popup-overlay.show {
+  opacity: 1; /* Completamente visibile */
+  visibility: visible; /* Visibile */
+}
+
+/* Contenuto principale del pop-up */
+.popup-content {
+  background: white; /* Sfondo bianco */
+  border-radius: 16px; /* Angoli arrotondati */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); /* Ombra pronunciata */
+  max-width: 520px; /* Larghezza ridotta per laptop piccoli */
+  width: 90%; /* Larghezza responsive */
+  max-height: 80vh; /* Altezza massima ridotta per laptop */
+  overflow-y: auto; /* Scroll verticale se necessario */
+  position: relative; /* Per posizionamento elementi figli */
+  transform: scale(0.7) translateY(50px); /* Inizialmente ridotto e spostato */
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Animazione elastica */
+  display: flex; /* Layout flex per gestire il footer fisso */
+  flex-direction: column; /* Disposizione verticale */
+}
+
+/* Animazione del contenuto quando il pop-up è visibile */
+.popup-overlay.show .popup-content {
+  transform: scale(1) translateY(0); /* Dimensione normale e posizione centrata */
+}
+
+/* Header del pop-up */
+.popup-header {
+  display: flex; /* Layout flex per centrare il titolo */
+  justify-content: center; /* Centra il titolo */
+  align-items: center; /* Allinea verticalmente */
+  padding: 15px 60px 10px 20px; /* Padding aumentato a destra per il pulsante chiudi */
+  border-bottom: 1px solid #e0e0e0; /* Bordo inferiore per separazione */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Sfondo gradiente leggero */
+  border-radius: 16px 16px 0 0; /* Angoli arrotondati solo in alto */
+  position: relative; /* Per posizionamento assoluto del pulsante chiudi */
+}
+
+/* Titolo del pop-up */
+.popup-header h2,
+#popup-title {
+  margin: 0;
+  color: #333;
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem); /* Dimensione aumentata per importanza */
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.25;
+  max-width: 100%;
+  letter-spacing: -0.005em; /* Spaziatura ottimizzata */
+}
+
+/* Skip link interno del pop-up */
+.popup-skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #00a033;
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  z-index: 1002;
+  transition: top 0.3s ease;
+}
+
+.popup-skip-link:focus {
+  top: 10px;
+}
+
+/* Pulsante di chiusura del pop-up */
+.popup-close {
+  background: none; /* Nessuno sfondo */
+  border: none; /* Nessun bordo */
+  font-size: 1.5rem; /* Dimensione icona */
+  color: #666; /* Colore grigio */
+  cursor: pointer; /* Cursore pointer */
+  padding: 8px; /* Padding per area cliccabile */
+  border-radius: 50%; /* Forma circolare */
+  transition: all 0.3s ease; /* Animazione fluida */
+  display: flex; /* Layout flex per centrare icona */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  min-width: 44px; /* Larghezza minima per touch aumentata */
+  min-height: 44px; /* Altezza minima per touch aumentata */
+  position: absolute; /* Posizionamento assoluto */
+  top: 15px; /* Posizione dall'alto */
+  right: 15px; /* Posizione da destra */
+}
+
+/* Effetto hover sul pulsante chiudi */
+.popup-close:hover {
+  background: rgba(231, 76, 60, 0.1); /* Sfondo rosso trasparente */
+  color: #e74c3c; /* Colore rosso */
+  transform: rotate(90deg); /* Rotazione dell'icona */
+}
+
+/* Corpo del pop-up */
+.popup-body {
+  padding: 15px 20px; /* Padding ulteriormente ridotto per laptop */
+  text-align: center; /* Testo centrato */
+  flex-grow: 1; /* Occupa tutto lo spazio disponibile */
+  overflow-y: auto; /* Scroll se il contenuto è troppo lungo */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE e Edge */
+}
+
+/* Nasconde la barra di scorrimento per WebKit (Chrome, Safari) */
+.popup-body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Icona principale del pop-up */
+.popup-icon {
+  width: 55px; /* Larghezza ulteriormente ridotta per laptop */
+  height: 55px; /* Altezza ulteriormente ridotta per laptop */
+  background: linear-gradient(135deg, rgba(0,160,51,0.1) 0%, rgba(0,160,51,0.2) 100%); /* Sfondo verde gradiente */
+  border-radius: 50%; /* Forma circolare */
+  display: flex; /* Layout flex per centrare icona */
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente */
+  margin: 0 auto 12px; /* Centra e riduce ulteriormente spazio sotto */
+  font-size: 1.5rem; /* Dimensione icona ridotta per laptop */
+  color: #00a033; /* Colore verde Enel */
+  transition: all 0.3s ease; /* Animazione fluida */
+}
+
+/* Effetto hover sull'icona */
+.popup-overlay.show .popup-icon {
+  animation: popupIconPulse 2s infinite alternate; /* Animazione pulsante */
+}
+
+/* Animazione pulsante per l'icona */
+@keyframes popupIconPulse {
+  0% {
+    transform: scale(1); /* Dimensione normale */
+    box-shadow: 0 0 0 0 rgba(0,160,51,0.3); /* Nessuna ombra */
+  }
+  100% {
+    transform: scale(1.05); /* Leggero ingrandimento */
+    box-shadow: 0 0 0 10px rgba(0,160,51,0); /* Ombra che si espande */
+  }
+}
+
+/* Paragrafi nel corpo del pop-up */
+.popup-body p {
+  color: #444; /* Colore grigio scuro */
+  line-height: 1.4; /* Altezza di riga più compatta */
+  margin-bottom: 6px; /* Spazio molto ridotto sotto ogni paragrafo */
+  font-size: 0.85rem; /* Dimensione ulteriormente ridotta */
+}
+
+/* Sezione dettagli del progetto nel pop-up */
+.project-details {
+  background: #f8f9fa; /* Sfondo grigio chiaro */
+  padding: 12px; /* Padding ulteriormente ridotto per laptop */
+  border-radius: 8px; /* Angoli arrotondati */
+  margin: 12px 0; /* Margini ulteriormente ridotti per laptop */
+  border-left: 4px solid #00a033; /* Bordo sinistro verde Enel */
+  border: 1px solid #e0e0e0; /* Bordo grigio chiaro come le altre card */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Ombra sottile come le altre card */
+  transition: all 0.3s ease; /* Animazione fluida per tutti gli effetti */
+  position: relative; /* Per elementi posizionati assolutamente */
+  overflow: hidden; /* Nasconde elementi che eccedono */
+  cursor: pointer; /* Indica che la card è interattiva */
+}
+
+/* Effetto hover per la card dettagli progetto */
+.project-details:hover {
+  transform: translateY(-5px); /* Solleva la card */
+  box-shadow: 0 8px 25px rgba(0,160,51,0.15); /* Ombra più pronunciata e verde */
+  border-color: rgba(0,160,51,0.3); /* Bordo verde */
+}
+
+/* Barra colorata che appare sopra la card al hover */
+.project-details::before {
+  content: ''; /* Elemento vuoto */
+  position: absolute; /* Posizionamento assoluto */
+  top: 0; /* In cima alla card */
+  left: 0; /* A sinistra */
+  right: 0; /* A destra */
+  height: 3px; /* Altezza della barra */
+  background: linear-gradient(90deg, #00a033, #00d641); /* Gradiente verde Enel */
+  transform: scaleX(0); /* Inizialmente nascosta */
+  transition: transform 0.3s ease; /* Animazione di apparizione */
+}
+
+/* Mostra la barra colorata al hover */
+.project-details:hover::before {
+  transform: scaleX(1); /* Mostra la barra a larghezza completa */
+}
+
+.project-details dl {
+  margin: 0; /* Rimuove margini predefiniti */
+}
+
+.project-details dt {
+  font-weight: 600; /* Grassetto per i termini */
+  color: #333; /* Colore grigio scuro */
+  margin-top: 6px; /* Spazio ulteriormente ridotto per laptop */
+  margin-bottom: 2px; /* Spazio ulteriormente ridotto per laptop */
+  font-size: 0.8rem; /* Dimensione ancora più piccola per laptop */
+}
+
+.project-details dt:first-child {
+  margin-top: 0; /* Rimuove margine dal primo termine */
+}
+
+.project-details dd {
+  margin: 0 0 4px 12px; /* Margini ulteriormente ridotti per laptop */
+  color: #444; /* Colore grigio per le definizioni */
+  font-size: 0.8rem; /* Dimensione ulteriormente ridotta per laptop */
+  line-height: 1.2; /* Altezza di riga più compatta per laptop */
+}
+
+/* Lista nel pop-up */
+.popup-body ul {
+  text-align: left; /* Allineamento a sinistra per la lista */
+  margin: 15px 0; /* Margini verticali */
+  padding-left: 0; /* Rimuove padding predefinito */
+  list-style: none; /* Rimuove punti elenco */
+}
+
+/* Elementi della lista */
+.popup-body li {
+  padding: 8px 0; /* Padding verticale */
+  color: #333; /* Colore grigio scuro */
+  font-size: 0.9rem; /* Dimensione ridotta */
+  display: flex; /* Layout flex per icona e testo */
+  align-items: center; /* Allinea verticalmente */
+  gap: 10px; /* Spazio tra emoji e testo */
+}
+
+/* Footer del pop-up */
+.popup-footer {
+  padding: 12px 20px 15px; /* Padding ulteriormente ridotto per laptop */
+  display: flex; /* Layout flex per i pulsanti */
+  gap: 12px; /* Spazio ridotto tra i pulsanti per laptop */
+  justify-content: center; /* Centra i pulsanti */
+  flex-wrap: wrap; /* Permette wrapping su schermi piccoli */
+  position: sticky; /* Posizione sticky per rimanere visibile */
+  bottom: 0; /* Si attacca al fondo del contenitore */
+  background: white; /* Sfondo bianco per coprire il contenuto sottostante */
+  border-top: 1px solid #e0e0e0; /* Bordo superiore per separazione */
+  margin-top: auto; /* Spinge il footer in fondo */
+  z-index: 10; /* Livello superiore per rimanere sopra il contenuto */
+}
+
+/* Pulsante primario del pop-up */
+.popup-btn-primary {
+  background: linear-gradient(135deg, #00a033 0%, #00d641 100%); /* Gradiente verde Enel */
+  color: white; /* Testo bianco */
+  border: none; /* Nessun bordo */
+  padding: 12px 24px; /* Padding generoso */
+  border-radius: 8px; /* Angoli arrotondati */
+  font-size: 0.95rem; /* Dimensione testo */
+  font-weight: 500; /* Peso medio */
+  cursor: pointer; /* Cursore pointer */
+  transition: all 0.3s ease; /* Animazione fluida */
+  display: inline-flex; /* Layout flex inline */
+  align-items: center; /* Allinea contenuto */
+  gap: 8px; /* Spazio tra icona e testo */
+  min-height: 44px; /* Altezza minima per touch */
+}
+
+/* Effetto hover sul pulsante primario */
+.popup-btn-primary:hover {
+  background: linear-gradient(135deg, #008029 0%, #00a033 100%); /* Gradiente più scuro */
+  transform: translateY(-2px); /* Solleva il pulsante */
+  box-shadow: 0 4px 12px rgba(0,160,51,0.3); /* Ombra verde */
+}
+
+/* Pulsante secondario del pop-up */
+.popup-btn-secondary {
+  background: transparent; /* Sfondo trasparente */
+  color: #666; /* Colore grigio */
+  border: 2px solid #e0e0e0; /* Bordo grigio */
+  padding: 10px 20px; /* Padding */
+  border-radius: 8px; /* Angoli arrotondati */
+  font-size: 0.9rem; /* Dimensione testo */
+  font-weight: 500; /* Peso medio */
+  cursor: pointer; /* Cursore pointer */
+  transition: all 0.3s ease; /* Animazione fluida */
+  min-height: 44px; /* Altezza minima per touch */
+}
+
+/* Effetto hover sul pulsante secondario */
+.popup-btn-secondary:hover {
+  border-color: #00a033; /* Bordo verde */
+  color: #00a033; /* Testo verde */
+  background: rgba(0,160,51,0.05); /* Sfondo verde molto leggero */
+}
+
+/* ===== RESPONSIVE POP-UP ===== */
+/* Adattamenti specifici per laptop con altezza schermo limitata (768px o meno) */
+@media (max-height: 768px) {
+  .popup-content {
+    max-height: 70vh; /* Altezza massima ancora più ridotta per laptop bassi */
+    max-width: 480px; /* Larghezza ridotta per compensare */
+  }
+
+  .popup-header {
+    padding: 12px 18px 8px; /* Padding molto compatto */
+  }
+
+  .popup-header h2 {
+    font-size: clamp(1rem, 3vw, 1.2rem); /* Font ridotto per laptop */
+  }
+
+  .popup-body {
+    padding: 12px 18px; /* Padding molto compatto */
+  }
+
+  .popup-icon {
+    width: 45px; /* Icona molto compatta */
+    height: 45px; /* Icona molto compatta */
+    font-size: 1.3rem; /* Font icona ridotto */
+    margin-bottom: 8px; /* Margine minimale */
+  }
+
+  .popup-body p {
+    font-size: 0.8rem; /* Font molto compatto */
+    margin-bottom: 4px; /* Spazio minimale */
+    line-height: 1.3; /* Altezza riga compatta */
+  }
+
+  .project-details {
+    padding: 10px; /* Padding minimale */
+    margin: 8px 0; /* Margini minimali */
+  }
+
+  .project-details dt,
+  .project-details dd {
+    font-size: 0.75rem; /* Font molto piccolo */
+    line-height: 1.2; /* Altezza riga compatta */
+  }
+
+  .project-details dt {
+    margin-top: 4px; /* Spazio minimale */
+    margin-bottom: 1px; /* Spazio minimale */
+  }
+
+  .project-details dd {
+    margin-bottom: 3px; /* Spazio minimale */
+  }
+
+  .popup-footer {
+    padding: 10px 18px 12px; /* Padding minimale */
+  }
+
+  .popup-btn-primary {
+    padding: 10px 20px; /* Padding ridotto */
+    font-size: 0.85rem; /* Font ridotto */
+    min-height: 40px; /* Altezza ridotta ma touch-friendly */
+  }
+}
+
+/* Adattamenti per laptop con altezza molto limitata (600px o meno) */
+@media (max-height: 600px) {
+  .popup-content {
+    max-height: 85vh; /* Usa quasi tutto lo spazio disponibile */
+    max-width: 450px; /* Larghezza ancora più ridotta */
+  }
+
+  .popup-icon {
+    width: 40px; /* Icona estremamente compatta */
+    height: 40px; /* Icona estremamente compatta */
+    font-size: 1.1rem; /* Font icona molto ridotto */
+    margin-bottom: 6px; /* Margine quasi nullo */
+  }
+
+  .popup-body p {
+    font-size: 0.75rem; /* Font estremamente compatto */
+    margin-bottom: 3px; /* Spazio quasi nullo */
+  }
+
+  .project-details {
+    padding: 8px; /* Padding estremamente ridotto */
+    margin: 6px 0; /* Margini estremamente ridotti */
+  }
+}
+
+/* Adattamenti per tablet */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 95%; /* Larghezza maggiore su tablet */
+    max-height: 85vh; /* Altezza massima maggiore */
+  }
+
+  .popup-header {
+    padding: 20px 25px 12px; /* Padding ridotto */
+  }
+
+  .popup-header h2 {
+    font-size: clamp(1.1rem, 4vw, 1.3rem); /* Dimensione adattata */
+  }
+
+  .popup-body {
+    padding: 25px 20px; /* Padding ridotto */
+  }
+
+  .popup-icon {
+    width: 70px; /* Dimensione ridotta */
+    height: 70px; /* Dimensione ridotta */
+    font-size: 1.8rem; /* Font ridotto */
+  }
+
+  .popup-footer {
+    padding: 15px 20px 25px; /* Padding ridotto */
+  }
+
+  .popup-btn-primary {
+    width: 100%; /* Larghezza completa */
+    justify-content: center; /* Centra il testo */
+  }
+}
+
+/* Adattamenti per smartphone */
+@media (max-width: 480px) {
+  .popup-content {
+    width: 95%; /* Larghezza quasi completa */
+    margin: 10px; /* Margini minimi */
+    max-height: 90vh; /* Altezza massima molto alta */
+  }
+
+  .popup-header {
+    padding: 15px 20px 10px; /* Padding minimale */
+  }
+
+  .popup-header h2 {
+    font-size: clamp(1rem, 5vw, 1.2rem); /* Dimensione compatta */
+  }
+
+  .popup-close {
+    font-size: 1.3rem; /* Dimensione ridotta */
+    min-width: 36px; /* Dimensione minima ridotta */
+    min-height: 36px; /* Dimensione minima ridotta */
+  }
+
+  .popup-body {
+    padding: 20px 15px; /* Padding molto ridotto */
+  }
+
+  .popup-icon {
+    width: 60px; /* Dimensione molto ridotta */
+    height: 60px; /* Dimensione molto ridotta */
+    font-size: 1.5rem; /* Font molto ridotto */
+    margin-bottom: 15px; /* Spazio ridotto */
+  }
+
+  .popup-body p {
+  color: #444; /* Colore grigio scuro */
+  line-height: 1.4; /* Altezza di riga più compatta */
+  margin-bottom: 6px; /* Spazio molto ridotto sotto ogni paragrafo */
+  font-size: 0.85rem; /* Dimensione ulteriormente ridotta */
+}
+
+  .popup-body li {
+    font-size: 0.85rem; /* Font molto ridotto */
+    padding: 6px 0; /* Padding ridotto */
+  }
+
+  .project-details {
+    padding: 15px; /* Padding ridotto per mobile */
+    margin: 15px 0; /* Margini ridotti */
+  }
+
+  .project-details dt,
+  .project-details dd {
+    font-size: 0.85rem; /* Font ridotto per mobile */
+  }
+
+  .project-details dd {
+    margin-left: 12px; /* Indentazione ridotta per mobile */
+  }
+
+  .popup-footer {
+    padding: 12px 15px 20px; /* Padding minimale */
+    gap: 10px; /* Spazio ridotto tra pulsanti */
+  }
+
+  .popup-btn-primary {
+    padding: 12px 20px; /* Padding ottimizzato per touch */
+    font-size: 0.9rem; /* Font ridotto */
+  }
+}
+
+/* ===== CLASSI UTILITY PER ACCESSIBILITÀ ===== */
+/* Classe per nascondere elementi visivamente ma mantenerli accessibili agli screen reader */
+.sr-only {
+  position: absolute; /* Posizionamento assoluto */
+  width: 1px; /* Larghezza minima */
+  height: 1px; /* Altezza minima */
+  padding: 0; /* Nessun padding */
+  margin: -1px; /* Margine negativo per nascondere */
+  overflow: hidden; /* Nasconde overflow */
+  clip: rect(0, 0, 0, 0); /* Clipping per nascondere */
+  white-space: nowrap; /* Previene wrapping del testo */
+  border: 0; /* Nessun bordo */
+}
+
+/* Stili per elementi focusabili */
+.report-item:focus,
+.info-card:focus {
+  outline: 3px solid #00a033;
+  outline-offset: 2px;
+  background-color: rgba(0, 160, 51, 0.05);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Migliora visibilità degli stati di hover per accessibilità */
+.report-item:hover,
+.report-item:focus {
+  box-shadow: 0 4px 15px rgba(0, 160, 51, 0.2);
+}
+
+.info-card:hover,
+.info-card:focus {
+  box-shadow: 0 8px 25px rgba(0, 160, 51, 0.15);
+}
+
+/* Stili per regioni live aria-live */
+[aria-live] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ===== STILI PER ELEMENTI ADDRESS NEL FOOTER ===== */
+/* Stili per l'elemento address nel footer che contiene i contatti */
+.footer-section address {
+  font-style: normal; /* Rimuove corsivo predefinito dell'elemento address */
+  line-height: 1.4; /* Altezza di riga ottimizzata per leggibilità */
+}
